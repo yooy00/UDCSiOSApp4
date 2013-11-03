@@ -9,12 +9,21 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+//    self.viewController = [[mainScreen alloc] initWithNibName:@"mainScreen"bundle:nil];
+//    
+//    [self.window addSubview:viewController.view];
+    mainScreen *rootView = [[mainScreen alloc] init];
+    rootView.title = @"主页";
+    self.navController = [[UINavigationController alloc] init];
+    [self.navController pushViewController:rootView animated:YES];
+    [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }
